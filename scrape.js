@@ -2,12 +2,27 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
-const bodyParser = require('body-parser'); // Import bodyParser for parsing JSON bodies
+const bodyParser = require('body-parser'); 
 
 const app = express();
-app.use(bodyParser.json()); // Add bodyParser middleware for JSON parsing
+app.use(bodyParser.json()); 
 
-
+const downloadFile = async (res, filePath) => {
+    return new Promise((resolve, reject) => {
+      const filestream = fs.createReadStream(filePath);
+      filestream.on('open', () => {
+        res.setHeader('Content-disposition', 'attachment; filename=' + path.basename(filePath));
+        res.setHeader('Content-type', 'text/csv');
+        filestream.pipe(res);
+      });
+      filestream.on('end', () => {
+        resolve();
+      });
+      filestream.on('error', (err) => {
+        reject(err);
+      });
+    });
+  };
 
 // Function to convert data to CSV format
 const convertToCSV = (data) => {
@@ -65,11 +80,7 @@ app.get('/flights/:city', async (req, res) => {
     const filePath = path.join(__dirname, `${city}.csv`);
     fs.writeFileSync(filePath, csvData);
 
-    // Send the CSV file as a response
-    res.setHeader('Content-disposition', 'attachment; filename=' + `${city}.csv`);
-    res.setHeader('Content-type', 'text/csv');
-    const filestream = fs.createReadStream(filePath);
-    filestream.pipe(res);
+    await downloadFile(res, filePath);
 
     console.log('Data saved to flights.csv successfully');
     return res.send(allFlightData);
