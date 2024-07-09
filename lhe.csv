@@ -1,0 +1,76 @@
+destination,airline,flightDate,scheduledDeparture,scheduledArrival,callSign,equipment,aircraft,flightNumber
+Karachi,Serene Air,3:45 PM,3:45 PM,5:30 PM,N/A,73H,N/A,ER523
+Karachi,AirBlue,5:00 PM,5:00 PM,6:55 PM,N/A,321,N/A,PA405
+Karachi,Pakistan International Airlines,5:00 PM,5:00 PM,6:45 PM,N/A,A320,Airbus A320-214,PK305
+Jeddah,Pakistan International Airlines,5:10 PM,5:10 PM,8:20 PM,N/A,B772,Boeing 777-240(ER),PK859
+Colombo,SriLankan Airlines,6:15 PM,6:15 PM,10:40 PM,N/A,320,N/A,UL186
+Karachi,FlyJinnah,8:05 PM,8:05 PM,9:50 PM,N/A,320,N/A,9P847
+Dammam,AirSial,8:25 PM,8:25 PM,10:30 PM,N/A,320,N/A,PF742
+Sharjah,FlyJinnah,9:00 PM,9:00 PM,11:15 PM,N/A,320,N/A,9P502
+Kuala Lumpur,Batik Air Malaysia,9:25 PM,9:25 PM,6:15 AM,N/A,738,N/A,OD132
+Sharjah,Pakistan International Airlines,9:35 PM,9:35 PM,11:45 PM,N/A,320,N/A,PK185
+Nanning,YTO Cargo Airlines,10:25 PM,10:25 PM,5:25 AM,N/A,75F,N/A,YG9148
+Kunming,YTO Cargo Airlines,10:40 PM,10:40 PM,5:40 AM,N/A,75F,N/A,YG9090
+Dubai,Pakistan International Airlines,11:05 PM,11:05 PM,1:25 AM,N/A,A320,Airbus A320-214,PK135
+Karachi,Serene Air,11:25 PM,11:25 PM,1:10 AM,N/A,332,N/A,ER525
+Bangkok,Thai Airways,11:40 PM,11:40 PM,6:10 AM,N/A,359,N/A,TG346
+Jeddah,AirBlue,11:50 PM,11:50 PM,3:20 AM,N/A,320,N/A,PA472
+Dubai,AirBlue,11:55 PM,11:55 PM,2:25 AM,N/A,321,N/A,PA416
+Sharjah,Pakistan International Airlines,11:59 PM,11:59 PM,2:45 AM,N/A,A320,Airbus A320-214,PK185
+Sharjah,AirBlue,12:15 AM,12:15 AM,2:40 AM,N/A,320,N/A,PA412
+Istanbul,Turkish Airlines,2:25 AM,2:25 AM,6:40 AM,N/A,333,N/A,TK715
+Kuwait City,Jazeera Airways,3:00 AM,3:00 AM,4:55 AM,N/A,320,N/A,J9502
+Doha,Qatar Airways,3:10 AM,3:10 AM,4:55 AM,N/A,789,N/A,QR621
+Dubai,Emirates,3:30 AM,3:30 AM,5:40 AM,N/A,77W,N/A,EK623
+Riyadh,flynas,4:15 AM,4:15 AM,6:30 AM,N/A,A20N,Airbus A320-251N,XY318
+Muscat,SalamAir,4:20 AM,4:20 AM,6:20 AM,N/A,32Q,N/A,OV522
+Abu Dhabi,Etihad Airways,4:35 AM,4:35 AM,7:00 AM,N/A,A321,Airbus A321-231,EY242
+Kuwait City,Kuwait Airways,5:15 AM,5:15 AM,7:15 AM,N/A,32A,N/A,KU204
+Dubai,FlyDubai,5:45 AM,5:45 AM,8:15 AM,N/A,7M8,N/A,FZ360
+Jeddah,AirSial,6:50 AM,6:50 AM,10:30 AM,N/A,320,N/A,PF716
+Karachi,FlyJinnah,7:15 AM,7:15 AM,9:00 AM,N/A,320,N/A,9P841
+Skardu,Pakistan International Airlines,7:30 AM,7:30 AM,10:50 AM,N/A,A320,Airbus A320-214,PK453
+Jeddah,Pakistan International Airlines,8:00 AM,8:00 AM,11:00 AM,N/A,B772,Boeing 777-240(ER),PK761
+Skardu,Pakistan International Airlines,9:30 AM,9:30 AM,10:50 AM,N/A,A320,Airbus A320-214,PK453
+Dubai,Emirates,9:45 AM,9:45 AM,12:05 PM,N/A,77W,N/A,EK625
+Doha,Qatar Airways,9:55 AM,9:55 AM,11:40 AM,N/A,789,N/A,QR629
+Karachi,AirSial,10:00 AM,10:00 AM,11:55 AM,N/A,320,N/A,PF142
+Karachi,AirBlue,10:00 AM,10:00 AM,11:55 AM,N/A,320,N/A,PA401
+Kuwait City,Kuwait Airways,10:35 AM,10:35 AM,12:35 PM,N/A,32A,N/A,KU204
+Jeddah,Saudia,10:45 AM,10:45 AM,1:55 PM,N/A,B77W,Boeing 777-368(ER),SV735
+Karachi,Pakistan International Airlines,11:00 AM,11:00 AM,12:45 PM,N/A,A320,Airbus A320-214,PK303
+Dubai,FlyDubai,11:30 AM,11:30 AM,2:10 PM,N/A,7M8,N/A,FZ360
+Sharjah,FlyJinnah,12:45 PM,12:45 PM,3:00 PM,N/A,320,N/A,9P500
+Doha,Pakistan International Airlines,1:10 PM,1:10 PM,3:00 PM,N/A,A320,Airbus A320-216,PK279
+Dubai,AirBlue,2:55 PM,2:55 PM,5:25 PM,N/A,320,N/A,PA410
+Karachi,FlyJinnah,3:00 PM,3:00 PM,4:45 PM,N/A,320,N/A,9P843
+Quetta,Serene Air,4:15 PM,4:15 PM,5:40 PM,N/A,73H,N/A,ER543
+Karachi,Pakistan International Airlines,5:00 PM,5:00 PM,6:45 PM,N/A,A320,Airbus A320-214,PK305
+Jeddah,Pakistan International Airlines,5:00 PM,5:00 PM,8:00 PM,N/A,B77W,Boeing 777-340(ER),PK841
+Karachi,AirBlue,5:00 PM,5:00 PM,6:55 PM,N/A,320,N/A,PA405
+Dubai,Serene Air,5:25 PM,5:25 PM,8:00 PM,N/A,332,N/A,ER723
+Karachi,FlyJinnah,8:05 PM,8:05 PM,9:50 PM,N/A,320,N/A,9P847
+Abu Dhabi,Etihad Airways,8:40 PM,8:40 PM,11:05 PM,N/A,A320,Airbus A320-232,EY244
+Sharjah,FlyJinnah,9:00 PM,9:00 PM,11:15 PM,N/A,320,N/A,9P502
+Kuala Lumpur,Batik Air Malaysia,9:25 PM,9:25 PM,6:15 AM,N/A,738,N/A,OD132
+Muscat,AirSial,9:30 PM,9:30 PM,11:30 PM,N/A,320,N/A,PF732
+Karachi,Serene Air,9:30 PM,9:30 PM,11:15 PM,N/A,73H,N/A,ER525
+Guangzhou,YTO Cargo Airlines,9:30 PM,9:30 PM,5:35 AM,N/A,75F,N/A,YG9026
+Guangzhou,China Southern Airlines,9:45 PM,9:45 PM,5:50 AM,N/A,789,N/A,CZ6038
+Karachi,AirSial,9:55 PM,9:55 PM,11:50 PM,N/A,320,N/A,PF146
+Bahrain,Gulf Air,10:00 PM,10:00 PM,11:55 PM,N/A,32N,N/A,GF767
+Nanning,YTO Cargo Airlines,10:25 PM,10:25 PM,5:25 AM,N/A,75F,N/A,YG9148
+Kunming,YTO Cargo Airlines,10:40 PM,10:40 PM,5:40 AM,N/A,75F,N/A,YG9090
+Sharjah,Pakistan International Airlines,11:35 PM,11:35 PM,1:45 AM,N/A,A320,Airbus A320-216,PK185
+Abu Dhabi,Pakistan International Airlines,11:35 PM,11:35 PM,2:00 AM,N/A,A320,Airbus A320-216,PK263
+Bishkek,Aero Nomad,11:40 PM,11:40 PM,3:15 AM,N/A,320,N/A,KA572
+Jeddah,AirBlue,11:50 PM,11:50 PM,3:20 AM,N/A,320,N/A,PA472
+Dubai,AirBlue,11:55 PM,11:55 PM,2:25 AM,N/A,320,N/A,PA416
+Dubai,Pakistan International Airlines,12:35 AM,12:35 AM,2:55 AM,N/A,320,N/A,PK235
+Sharjah,Pakistan International Airlines,12:45 AM,12:45 AM,2:55 AM,N/A,320,N/A,PK185
+Abu Dhabi,AirBlue,12:50 AM,12:50 AM,3:15 AM,N/A,320,N/A,PA430
+Jeddah,Pakistan International Airlines,1:00 AM,1:00 AM,4:00 AM,N/A,B772,Boeing 777-240(ER),PK839
+Istanbul,Turkish Airlines,2:25 AM,2:25 AM,6:40 AM,N/A,332,N/A,TK715
+Jeddah,Saudia,2:30 AM,2:30 AM,5:40 AM,N/A,B77W,Boeing 777-368(ER),SV739
+Doha,Qatar Airways,3:10 AM,3:10 AM,4:55 AM,N/A,351,N/A,QR621
+Dammam,Flynas,3:15 AM,3:15 AM,5:05 AM,N/A,32N,N/A,XY884
