@@ -1,5 +1,4 @@
 destination,airline,flightDate,scheduledDeparture,scheduledArrival,callSign,equipment,aircraft,flightNumber
-Karachi,Serene Air,3:45 PM,3:45 PM,5:30 PM,N/A,73H,N/A,ER523
 Karachi,AirBlue,5:00 PM,5:00 PM,6:55 PM,N/A,321,N/A,PA405
 Karachi,Pakistan International Airlines,5:00 PM,5:00 PM,6:45 PM,N/A,A320,Airbus A320-214,PK305
 Jeddah,Pakistan International Airlines,5:10 PM,5:10 PM,8:20 PM,N/A,B772,Boeing 777-240(ER),PK859
@@ -74,3 +73,4 @@ Istanbul,Turkish Airlines,2:25 AM,2:25 AM,6:40 AM,N/A,332,N/A,TK715
 Jeddah,Saudia,2:30 AM,2:30 AM,5:40 AM,N/A,B77W,Boeing 777-368(ER),SV739
 Doha,Qatar Airways,3:10 AM,3:10 AM,4:55 AM,N/A,351,N/A,QR621
 Dammam,Flynas,3:15 AM,3:15 AM,5:05 AM,N/A,32N,N/A,XY884
+Dubai,Emirates,3:30 AM,3:30 AM,5:40 AM,N/A,77W,N/A,EK623

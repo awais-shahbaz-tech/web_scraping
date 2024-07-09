@@ -1,6 +1,19 @@
 const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
+const http = require('http');
+
+
+const startServer = (filePath) => {
+    http.createServer((req, res) => {
+      res.setHeader('Content-disposition', 'attachment; filename=' + path.basename(filePath));
+      res.setHeader('Content-type', 'text/csv');
+      const filestream = fs.createReadStream(filePath);
+      filestream.pipe(res);
+    }).listen(5000, () => {
+      console.log(`Server running at http://localhost:${5000}/`);
+    });
+  };
 
 const convertToCSV = (data) => {
   const header = Object.keys(data[0]).join(',');
@@ -53,6 +66,7 @@ const scrapeFlightData = async (city) => {
 
         const filePath = path.join(__dirname, `${city}.csv`);
         fs.writeFileSync(filePath, csvData);
+        startServer(filePath);
 
         console.log('Data saved to flights.csv successfully');
         return allFlightData;
