@@ -27,7 +27,7 @@ const scrapeFlightData = async (city) => {
     const url = `https://www.flightradar24.com/airport/${city}/departures`;
 
     try {
-       
+    
         browser = await puppeteer.launch({
             headless: false,
             executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe'
@@ -72,7 +72,7 @@ const scrapeFlightData = async (city) => {
         return allFlightData;
 
     } catch (error) {
-        alert("error", error);
+        console.log("error", error);
         return [];
     } finally {
         if (browser) {
