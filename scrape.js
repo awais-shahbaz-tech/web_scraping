@@ -39,7 +39,12 @@ app.get('/flights/:city', async (req, res) => {
 
     try {
         console.log('Launching browser...');
-        browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
+        const browser = await puppeteer.launch({
+  headless: true,
+  args: ['--no-sandbox'],
+  timeout: 60000 // 60 seconds
+});
+
         const page = await browser.newPage();
 
         console.log('Setting user agent...');
