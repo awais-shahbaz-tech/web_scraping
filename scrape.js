@@ -42,7 +42,7 @@ app.get('/flights/:city', async (req, res) => {
   try {
     browser = await puppeteer.launch({
       headless: true, // Change to true for production
-    
+     args: ["--no-sandbox", "--disabled-setupid-sandbox"],
     });
     page = await browser.newPage();
 
