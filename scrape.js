@@ -133,7 +133,7 @@ app.get('/flights/:city', async (req, res) => {
     }
 });
 
-const PORT = 5001;
+const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 });
