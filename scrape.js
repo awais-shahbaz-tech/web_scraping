@@ -39,11 +39,19 @@ app.get('/flights/:city', async (req, res) => {
 
     try {
         console.log('Launching browser...');
-        const browser = await puppeteer.launch({
+ const browser = await puppeteer.launch({
   headless: true,
-  args: ['--no-sandbox'],
-  timeout: 60000 // 60 seconds
+  args: [
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-dev-shm-usage',
+    '--disable-gpu',
+    '--no-zygote',
+    '--single-process',
+  ],
+  timeout: 60000 // Increase timeout if necessary
 });
+
 
         const page = await browser.newPage();
 
