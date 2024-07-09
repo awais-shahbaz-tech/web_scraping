@@ -50,7 +50,7 @@ app.get('/flights/:city', async (req, res) => {
                 '--no-zygote',
                 '--single-process',
             ],
-            timeout: 60000 // Increase timeout if necessary
+            timeout: 6000000 // Increase timeout if necessary
         });
 
         const page = await browser.newPage();
