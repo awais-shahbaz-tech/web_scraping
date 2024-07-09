@@ -3,10 +3,9 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser'); 
+
 const app = express();
 app.use(bodyParser.json()); 
-
-
 
 const downloadFile = async (res, filePath) => {
     return new Promise((resolve, reject) => {
@@ -41,21 +40,13 @@ app.get('/flights/:city', async (req, res) => {
   const url = `https://www.flightradar24.com/airport/${city}/departures`;
 
   try {
-     console.log('Launching browser...');
-    const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
-    const page = await browser.newPage();
+    browser = await puppeteer.launch({
+      headless: true, // Change to true for production
+      executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe'
+    });
+    page = await browser.newPage();
 
-    console.log('Setting user agent...');
-    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
-
-    console.log(`Navigating to ${url}...`);
-    await page.goto(url, { waitUntil: 'networkidle2', timeout: 0 }); // Increased timeout
-
-    // Handle cookies consent popup
-    console.log('Checking for cookies consent popup...');
-
-
-
+    await page.goto(url, { waitUntil: 'networkidle2', timeout: 0 });
 
     await page.waitForSelector('[data-testid="list-wrapper"]');
 
