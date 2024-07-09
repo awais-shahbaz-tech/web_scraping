@@ -55,6 +55,7 @@ app.get('/flights/:city', async (req, res) => {
     console.log('Checking for cookies consent popup...');
 
 
+      await page.click('#onetrust-accept-btn-handler');
 
 
     await page.waitForSelector('[data-testid="list-wrapper"]');
@@ -100,6 +101,8 @@ app.get('/flights/:city', async (req, res) => {
   } finally {
     if (browser) {
       await browser.close();
+            return res.status(200).send("close");
+
     }
   }
 });
