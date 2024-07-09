@@ -46,14 +46,14 @@ app.get('/flights/:city', async (req, res) => {
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
 
         console.log(`Navigating to ${url}...`);
-        await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 }); // Increased timeout
+        await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000000 }); // Increased timeout
 
         // Handle cookies consent popup
         try {
             await page.waitForSelector('#onetrust-accept-btn-handler', { timeout: 5000 });
             console.log('Cookies consent popup found. Accepting cookies...');
             await page.click('#onetrust-accept-btn-handler');
-            await page.waitForTimeout(5000); // Wait for a few seconds to ensure popup is handled
+            await page.waitForTimeout(1100); // Wait for a few seconds to ensure popup is handled
         } catch (e) {
             console.log('No cookies consent popup found.');
         }
