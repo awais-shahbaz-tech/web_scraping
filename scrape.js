@@ -109,4 +109,16 @@ app.get('/flights/:city', async (req, res) => {
         const filePath = path.join(__dirname, `${city}.csv`);
         fs.writeFileSync(filePath, csvData);
 
-        await downloadFile
+        await downloadFile(res, filePath);
+
+        console.log('Data saved to flights.csv successfully');
+    } catch (error) {
+        console.error("Error:", error);
+        return res.status(500).send("Error retrieving flight data");
+    }
+});
+
+const PORT = 5001;
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
+});
