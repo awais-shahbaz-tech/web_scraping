@@ -25,6 +25,7 @@ const downloadFile = async (res, filePath) => {
 
 // Function to convert data to CSV format
 const convertToCSV = (data) => {
+    if (!data.length) return '';
     const header = Object.keys(data[0]).join(',');
     const rows = data.map(row => Object.values(row).join(',')).join('\n');
     return `${header}\n${rows}`;
@@ -39,19 +40,18 @@ app.get('/flights/:city', async (req, res) => {
 
     try {
         console.log('Launching browser...');
- const browser = await puppeteer.launch({
-  headless: true,
-  args: [
-    '--no-sandbox',
-    '--disable-setuid-sandbox',
-    '--disable-dev-shm-usage',
-    '--disable-gpu',
-    '--no-zygote',
-    '--single-process',
-  ],
-  timeout: 60000 // Increase timeout if necessary
-});
-
+        browser = await puppeteer.launch({
+            headless: true,
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-dev-shm-usage',
+                '--disable-gpu',
+                '--no-zygote',
+                '--single-process',
+            ],
+            timeout: 60000 // Increase timeout if necessary
+        });
 
         const page = await browser.newPage();
 
@@ -59,14 +59,14 @@ app.get('/flights/:city', async (req, res) => {
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
 
         console.log(`Navigating to ${url}...`);
-        await page.goto(url, { waitUntil: 'networkidle2', timeout: 0}); // Increased timeout
+        await page.goto(url, { waitUntil: 'networkidle2', timeout: 0 }); // Increased timeout
 
         // Handle cookies consent popup
         try {
             await page.waitForSelector('#onetrust-accept-btn-handler', { timeout: 5000 });
             console.log('Cookies consent popup found. Accepting cookies...');
             await page.click('#onetrust-accept-btn-handler');
-            await page.waitForTimeout(1100); // Wait for a few seconds to ensure popup is handled
+            await page.waitForTimeout(5000); // Wait for a few seconds to ensure popup is handled
         } catch (e) {
             console.log('No cookies consent popup found.');
         }
@@ -121,3 +121,4 @@ const PORT = 5000;
 app.listen(PORT, () => {
     console.log(`Server started on port ${PORT}`);
 });
+                                                
