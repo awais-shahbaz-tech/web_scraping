@@ -3,9 +3,18 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser'); 
-
+const os  = require('os');
 const app = express();
 app.use(bodyParser.json()); 
+
+const osPlatform = os.platform(); // possible values are: 'darwin', 'freebsd', 'linux', 'sunos' or 'win32'
+console.log('Scraper running on platform: ', osPlatform);
+let executablePath;
+if (/^win/i.test(osPlatform)) {
+  executablePath = '';
+} else if (/^linux/i.test(osPlatform)) {
+  executablePath = '/usr/bin/google-chrome';
+}
 
 const downloadFile = async (res, filePath) => {
     return new Promise((resolve, reject) => {
@@ -42,7 +51,7 @@ app.get('/flights/:city', async (req, res) => {
   try {
     browser = await puppeteer.launch({
       headless: true, // Change to true for production
-    executablePath :"/usr/bin/google-chrome"
+    executablePath :executablePath
     });
     page = await browser.newPage();
 
