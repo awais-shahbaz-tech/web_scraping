@@ -59,7 +59,7 @@ app.get('/flights/:city', async (req, res) => {
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
 
         console.log(`Navigating to ${url}...`);
-        await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000000 }); // Increased timeout
+        await page.goto(url, { waitUntil: 'networkidle2', timeout: 0}); // Increased timeout
 
         // Handle cookies consent popup
         try {
