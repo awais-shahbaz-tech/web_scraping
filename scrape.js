@@ -42,7 +42,7 @@ app.get('/flights/:city', async (req, res) => {
   try {
     browser = await puppeteer.launch({
       headless: true, // Change to true for production
-      executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe'
+      channel: 'chrome'
     });
     page = await browser.newPage();
 
