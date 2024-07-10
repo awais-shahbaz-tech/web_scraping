@@ -1,4 +1,4 @@
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer-core');
 const fs = require('fs');
 const path = require('path');
 const express = require('express');
@@ -53,8 +53,7 @@ app.get('/scrape/:city', async (req, res) => {
     try {
         console.log('Launching browser...');
         browser = await puppeteer.launch({
-            headless: false,
-             args: ['--no-sandbox']
+             channel:"chrome"
             
         });
 
