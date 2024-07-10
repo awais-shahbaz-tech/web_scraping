@@ -35,6 +35,10 @@ const convertToCSV = (data) => {
     return `${header}\n${rows}`;
 };
 
+app.get('/', (req, res) => {
+    res.satus(200).send('Hello from the server');
+});
+
 app.get('/flights/:city', (req, res) => {
   res.render('loader');
 });
