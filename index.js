@@ -40,7 +40,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/flights/:city', (req, res) => {
-  res.render('loader');
+  res.render('index');
 });
 
 // Route to scrape flight data and download as CSV
