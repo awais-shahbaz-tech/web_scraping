@@ -1,8 +1,12 @@
 {
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/"
+      "src": "./scrape.js",
+      "use": "@vercel/node"
     }
+  ],
+  "routes": [
+    { "source": "/(.*)", "destination": "/" }
   ]
 }
