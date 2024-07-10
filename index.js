@@ -36,7 +36,7 @@ const convertToCSV = (data) => {
 };
 
 app.get('/', (req, res) => {
-    res.satus(200).send('Hello from the server');
+    res.status(200).send('Hello from the server');
 });
 
 app.get('/flights/:city', (req, res) => {
