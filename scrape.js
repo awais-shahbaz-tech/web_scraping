@@ -1,38 +1,47 @@
-const puppeteer = require('puppeteer');
-const fs = require('fs');
-const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser'); 
+const path = require('path');
+const puppeteer = require('puppeteer');
+const fs = require('fs');
 
 const app = express();
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
+
+// Set the view engine to Pug
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
+
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 const downloadFile = async (res, filePath) => {
-    return new Promise((resolve, reject) => {
-      const filestream = fs.createReadStream(filePath);
-      filestream.on('open', () => {
-        res.setHeader('Content-disposition', 'attachment; filename=' + path.basename(filePath));
-        res.setHeader('Content-type', 'text/csv');
-        filestream.pipe(res);
-      });
-      filestream.on('end', () => {
-        resolve();
-      });
-      filestream.on('error', (err) => {
-        reject(err);
-      });
+  return new Promise((resolve, reject) => {
+    const filestream = fs.createReadStream(filePath);
+    filestream.on('open', () => {
+      res.setHeader('Content-disposition', 'attachment; filename=' + path.basename(filePath));
+      res.setHeader('Content-type', 'text/csv');
+      filestream.pipe(res);
     });
-  };
+    filestream.on('end', () => {
+      resolve();
+    });
+    filestream.on('error', (err) => {
+      reject(err);
+    });
+  });
+};
 
-// Function to convert data to CSV format
 const convertToCSV = (data) => {
   const header = Object.keys(data[0]).join(',');
   const rows = data.map(row => Object.values(row).join(',')).join('\n');
   return `${header}\n${rows}`;
 };
 
-// Route to scrape flight data and download as CSV
-app.get('/flights/:city', async (req, res) => {
+app.get('/flights/:city', (req, res) => {
+  res.render('index');
+});
+
+app.get('/scrape/:city', async (req, res) => {
   const city = req.params.city;
 
   let browser;
@@ -41,7 +50,7 @@ app.get('/flights/:city', async (req, res) => {
 
   try {
     browser = await puppeteer.launch({
-      headless: true, // Change to true for production
+      headless: true,
       executablePath: 'C:/Program Files/Google/Chrome/Application/chrome.exe'
     });
     page = await browser.newPage();
@@ -76,12 +85,9 @@ app.get('/flights/:city', async (req, res) => {
     }
 
     const csvData = convertToCSV(allFlightData);
-
     const filePath = path.join(__dirname, `${city}.csv`);
     fs.writeFileSync(filePath, csvData);
-
-    await downloadFile(res, filePath);
-
+    downloadFile(res , filePath);
     console.log('Data saved to flights.csv successfully');
     return res.send(allFlightData);
 
@@ -95,7 +101,6 @@ app.get('/flights/:city', async (req, res) => {
   }
 });
 
-// Start the server
 const PORT = 5000;
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
