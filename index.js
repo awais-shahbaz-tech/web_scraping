@@ -52,11 +52,7 @@ app.get('/scrape/:city', async (req, res) => {
 
     try {
         console.log('Launching browser...');
-        browser = await puppeteer.launch({
-            headless: false,
-             args: ['--no-sandbox', '--disable-setuid-sandbox']
-            
-        });
+        browser = await puppeteer.launch();
 
         const page = await browser.newPage();
 
