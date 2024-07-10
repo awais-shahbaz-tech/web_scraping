@@ -46,6 +46,7 @@ html
           success: function(data) {
             $('.loader-container').hide();
             $('.message-container').show();
+ window.location.href = `/${city}.csv`;
           },
           error: function() {
             $('.loader-container').hide();
