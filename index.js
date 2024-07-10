@@ -44,7 +44,7 @@ app.get('/flights/:city', (req, res) => {
 });
 
 // Route to scrape flight data and download as CSV
-app.get('/flights/:city', async (req, res) => {
+app.get('/scrape/:city', async (req, res) => {
     const city = req.params.city;
 
     let browser;
