@@ -6,7 +6,11 @@ const express = require('express');
 const bodyParser = require('body-parser'); 
 const app = express();
 app.use(bodyParser.json()); 
+app.set('view engine', 'pug');
+app.set('views', path.join(__dirname, 'views'));
 
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
 const downloadFile = async (res, filePath) => {
     return new Promise((resolve, reject) => {
         const filestream = fs.createReadStream(filePath);
@@ -31,6 +35,10 @@ const convertToCSV = (data) => {
     const rows = data.map(row => Object.values(row).join(',')).join('\n');
     return `${header}\n${rows}`;
 };
+
+app.get('/flights/:city', (req, res) => {
+  res.render('loader');
+});
 
 // Route to scrape flight data and download as CSV
 app.get('/flights/:city', async (req, res) => {
