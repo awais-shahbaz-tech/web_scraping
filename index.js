@@ -10,23 +10,7 @@ app.set('views', path.join(__dirname, 'views'));
     
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
-const downloadFile = async (res, filePath) => {
-  
-    return new Promise((resolve, reject) => {
-        const filestream = fs.createReadStream(filePath);
-        filestream.on('open', () => {
-            res.setHeader('Content-disposition', 'attachment; filename=' + path.basename(filePath));
-            res.setHeader('Content-type', 'text/csv');
-            filestream.pipe(res);
-        });
-        filestream.on('end', () => {
-            resolve();
-        });
-        filestream.on('error', (err) => {
-            reject(err);
-        });
-    });
-};
+
 
 // Function to convert data to CSV format
 const convertToCSV = (data) => {
@@ -105,9 +89,10 @@ app.get('/scrape/:city', async (req, res) => {
         const filePath = path.join(__dirname, 'public', `${city}.csv`);
 
         fs.writeFileSync(filePath, csvData);
-
-        await downloadFile(res, filePath);
-        res.redirect(`/${city}.csv`);
+        
+       
+        res.json(allFlightData);
+       
         console.log('Data saved to flights.csv successfully');
     } catch (error) {
         console.error("Error:", error);
