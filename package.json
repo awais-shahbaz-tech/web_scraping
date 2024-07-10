@@ -2,7 +2,10 @@
   "name": "flight-scraper",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "scrape.js",
+  "engines": {
+    "node" : "18.x"
+  },
   "scripts": {
     "start": "node scrape.js",
     "test": "echo \"Error: no test specified\" && exit 1"
