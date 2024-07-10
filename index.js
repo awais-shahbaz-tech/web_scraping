@@ -10,22 +10,7 @@ app.set('views', path.join(__dirname, 'views'));
     
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
-const downloadFile = async (res, filePath) => {
-    return new Promise((resolve, reject) => {
-        const filestream = fs.createReadStream(filePath);
-        filestream.on('open', () => {
-            res.setHeader('Content-disposition', 'attachment; filename=' + path.basename(filePath));
-            res.setHeader('Content-type', 'text/csv');
-            filestream.pipe(res);
-        });
-        filestream.on('end', () => {
-            resolve();
-        });
-        filestream.on('error', (err) => {
-            reject(err);
-        });
-    });
-};
+
 
 // Function to convert data to CSV format
 const convertToCSV = (data) => {
@@ -36,15 +21,15 @@ const convertToCSV = (data) => {
 };
 
 app.get('/', (req, res) => {
-    res.satus(200).send('Hello from the server');
+    res.status(200).send('Hello from the server');
 });
 
 app.get('/flights/:city', (req, res) => {
-  res.render('loader');
+  res.render('index');
 });
 
 // Route to scrape flight data and download as CSV
-app.get('/flights/:city', async (req, res) => {
+app.get('/scrape/:city', async (req, res) => {
     const city = req.params.city;
 
     let browser;
@@ -52,18 +37,7 @@ app.get('/flights/:city', async (req, res) => {
 
     try {
         console.log('Launching browser...');
-        browser = await puppeteer.launch({
-            headless: true,
-            args: [
-                '--no-sandbox',
-                '--disable-setuid-sandbox',
-                '--disable-dev-shm-usage',
-                '--disable-gpu',
-                '--no-zygote',
-                '--single-process',
-            ],
-            timeout: 6000000 // Increase timeout if necessary
-        });
+        const browser = await puppeteer.launch({ headless: false });
 
         const page = await browser.newPage();
 
@@ -71,11 +45,11 @@ app.get('/flights/:city', async (req, res) => {
         await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36');
 
         console.log(`Navigating to ${url}...`);
-        await page.goto(url, { waitUntil: 'networkidle2', timeout: 0 }); // Increased timeout
-
+        await page.goto(url, { timeout: 60000 });
+        await page.setViewport({ width: 1080, height: 1024 });
         // Handle cookies consent popup
         try {
-            await page.waitForSelector('#onetrust-accept-btn-handler', { timeout: 5000 });
+            await page.waitForSelector('#onetrust-accept-btn-handler', { timeout: 6000 });
             console.log('Cookies consent popup found. Accepting cookies...');
             await page.click('#onetrust-accept-btn-handler');
             await page.waitForTimeout(5000); // Wait for a few seconds to ensure popup is handled
@@ -112,11 +86,13 @@ app.get('/flights/:city', async (req, res) => {
 
         const csvData = convertToCSV(allFlightData);
 
-        const filePath = path.join(__dirname, `${city}.csv`);
+        const filePath = path.join(__dirname, 'public', `${city}.csv`);
+
         fs.writeFileSync(filePath, csvData);
-
-        await downloadFile(res, filePath);
-
+        
+       
+        res.json(allFlightData);
+       
         console.log('Data saved to flights.csv successfully');
     } catch (error) {
         console.error("Error:", error);
