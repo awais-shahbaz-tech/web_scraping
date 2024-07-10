@@ -56,13 +56,8 @@ app.get('/scrape/:city', async (req, res) => {
             headless: true,
             args: [
                 '--no-sandbox',
-                '--disable-setuid-sandbox',
-                '--disable-dev-shm-usage',
-                '--disable-gpu',
-                '--no-zygote',
-                '--single-process',
-            ],
-            timeout: 6000000 // Increase timeout if necessary
+          
+            ]
         });
 
         const page = await browser.newPage();
