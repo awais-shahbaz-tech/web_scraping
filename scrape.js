@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json()); 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
-
+    
 // Serve static files
 app.use(express.static(path.join(__dirname, 'public')));
 const downloadFile = async (res, filePath) => {
